@@ -7,13 +7,13 @@
 
 /* --- CSS CUSTOM PROPERTIES --- */
 :root {
-  /* Base Variables */
-  --bg-primary: #9966cc;
+  /* Base Variables (default: gold) */
+  --bg-primary: #c8b482;
   --bg-dark: var(--bg-primary);
   --bg-section: var(--bg-primary);
   --bg-card: transparent;
-  --bg-gradient-hero: linear-gradient(135deg, #a577d4 0%, #8a5cbf 100%);
-  --bg-gradient-accent: linear-gradient(135deg, #7a4dab 0%, #6a3d9a 100%);
+  --bg-gradient-hero: linear-gradient(135deg, #d4c494 0%, #c0a870 100%);
+  --bg-gradient-accent: linear-gradient(135deg, #b89c5e 0%, #a68a4c 100%);
 
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.3);
@@ -22,11 +22,11 @@
   --glass-border-hover: rgba(255, 255, 255, 0.7);
 
   /* Text */
-  --text-primary: #29114d;
-  --text-secondary: #452773;
-  --text-muted: #5e3a99;
-  --text-accent: #7542c2;
-  --name-color: #f7f2ff;
+  --text-primary: #3d3018;
+  --text-secondary: #5c4a2e;
+  --text-muted: #7a6340;
+  --text-accent: #8b7340;
+  --name-color: #faf6ed;
 
   /* Typography */
   --font-display: 'Comfortaa', sans-serif;
@@ -61,6 +61,51 @@
   --transition-fast: 0.2s var(--ease-out-expo);
   --transition-med: 0.4s var(--ease-out-expo);
   --transition-slow: 0.6s var(--ease-out-expo);
+}
+
+/* Theme: Gold/Khaki */
+html.theme-gold {
+  --bg-primary: #c8b482;
+  --bg-gradient-hero: linear-gradient(135deg, #d4c494 0%, #c0a870 100%);
+  --bg-gradient-accent: linear-gradient(135deg, #b89c5e 0%, #a68a4c 100%);
+  --text-primary: #3d3018;
+  --text-secondary: #5c4a2e;
+  --text-muted: #7a6340;
+  --text-accent: #8b7340;
+  --name-color: #faf6ed;
+}
+/* Theme: Sage Green */
+html.theme-green {
+  --bg-primary: #9dbf96;
+  --bg-gradient-hero: linear-gradient(135deg, #b0d4a8 0%, #8aad82 100%);
+  --bg-gradient-accent: linear-gradient(135deg, #7a9e72 0%, #6a8e62 100%);
+  --text-primary: #1a3316;
+  --text-secondary: #2d4d28;
+  --text-muted: #3f6638;
+  --text-accent: #4a7a42;
+  --name-color: #f2f8f0;
+}
+/* Theme: Tan/Brown */
+html.theme-brown {
+  --bg-primary: #bfa07a;
+  --bg-gradient-hero: linear-gradient(135deg, #ccb08e 0%, #b39068 100%);
+  --bg-gradient-accent: linear-gradient(135deg, #a68058 0%, #94704a 100%);
+  --text-primary: #3b2810;
+  --text-secondary: #5a3e20;
+  --text-muted: #785530;
+  --text-accent: #8a6438;
+  --name-color: #faf4ec;
+}
+/* Theme: Lilac/Mauve */
+html.theme-lilac {
+  --bg-primary: #cca0cc;
+  --bg-gradient-hero: linear-gradient(135deg, #dbb4db 0%, #bf8cbf 100%);
+  --bg-gradient-accent: linear-gradient(135deg, #b07ab0 0%, #9e689e 100%);
+  --text-primary: #3d1a3d;
+  --text-secondary: #5c2e5c;
+  --text-muted: #7a4078;
+  --text-accent: #8b4a8b;
+  --name-color: #faf2fa;
 }
 
 /* --- RESET & BASE --- */
