@@ -6,11 +6,6 @@
 (function () {
   'use strict';
 
-  /* --- RANDOM PASTEL THEME --- */
-  var themes = ['theme-purple', 'theme-orange', 'theme-green', 'theme-brown', 'theme-blue'];
-  var randomTheme = themes[Math.floor(Math.random() * themes.length)];
-  document.documentElement.classList.add(randomTheme);
-
   /* --- PROJECT DATA (with full details) --- */
   var projectData = [
     {
