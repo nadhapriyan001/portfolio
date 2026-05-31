@@ -6,6 +6,11 @@
 (function () {
   'use strict';
 
+  /* --- RANDOM PASTEL THEME --- */
+  var themes = ['theme-purple', 'theme-orange', 'theme-green', 'theme-brown', 'theme-blue'];
+  var randomTheme = themes[Math.floor(Math.random() * themes.length)];
+  document.documentElement.classList.add(randomTheme);
+
   /* --- PROJECT DATA (with full details) --- */
   var projectData = [
     {
@@ -206,7 +211,6 @@
     var overlay = document.getElementById('project-overlay');
     var overlayClose = document.getElementById('overlay-close');
     var currentIndex = 0;
-    var autoPlayTimer = null;
     var isDragging = false;
     var startX = 0;
     var dragThreshold = 60;
@@ -239,13 +243,11 @@
     if (carouselPrev) {
       carouselPrev.addEventListener('click', function () {
         updateCarousel(currentIndex - 1);
-        resetAutoPlay();
       });
     }
     if (carouselNext) {
       carouselNext.addEventListener('click', function () {
         updateCarousel(currentIndex + 1);
-        resetAutoPlay();
       });
     }
 
@@ -253,7 +255,6 @@
     carouselDots.forEach(function (dot) {
       dot.addEventListener('click', function () {
         updateCarousel(parseInt(dot.getAttribute('data-index'), 10));
-        resetAutoPlay();
       });
     });
 
@@ -265,7 +266,6 @@
           openProjectDetail(idx);
         } else {
           updateCarousel(idx);
-          resetAutoPlay();
         }
       });
     });
@@ -276,8 +276,8 @@
         if (e.key === 'Escape') closeProjectDetail();
         return;
       }
-      if (e.key === 'ArrowLeft') { updateCarousel(currentIndex - 1); resetAutoPlay(); }
-      else if (e.key === 'ArrowRight') { updateCarousel(currentIndex + 1); resetAutoPlay(); }
+      if (e.key === 'ArrowLeft') { updateCarousel(currentIndex - 1); }
+      else if (e.key === 'ArrowRight') { updateCarousel(currentIndex + 1); }
     });
 
     // Touch / drag
@@ -291,7 +291,6 @@
         var diff = e.clientX - startX;
         if (Math.abs(diff) > dragThreshold) {
           updateCarousel(diff < 0 ? currentIndex + 1 : currentIndex - 1);
-          resetAutoPlay();
         }
       });
       viewport.addEventListener('mouseleave', function () { isDragging = false; });
@@ -300,31 +299,17 @@
         var diff = e.changedTouches[0].clientX - startX;
         if (Math.abs(diff) > dragThreshold) {
           updateCarousel(diff < 0 ? currentIndex + 1 : currentIndex - 1);
-          resetAutoPlay();
         }
       }, { passive: true });
     }
 
-    // Auto-play
-    function startAutoPlay() {
-      autoPlayTimer = setInterval(function () { updateCarousel(currentIndex + 1); }, 5000);
-    }
-    function resetAutoPlay() { clearInterval(autoPlayTimer); startAutoPlay(); }
-
-    var carouselEl = document.getElementById('project-carousel');
-    if (carouselEl) {
-      carouselEl.addEventListener('mouseenter', function () { clearInterval(autoPlayTimer); });
-      carouselEl.addEventListener('mouseleave', function () { startAutoPlay(); });
-    }
 
     // Init
     updateCarousel(0);
-    startAutoPlay();
 
     /* --- Project Detail Overlay --- */
     function openProjectDetail(index) {
       if (!overlay) return;
-      clearInterval(autoPlayTimer);
 
       var data = projectData[index];
       var overlayImage = document.getElementById('overlay-image');
@@ -368,7 +353,6 @@
       if (!overlay) return;
       overlay.classList.remove('active');
       document.body.style.overflow = '';
-      startAutoPlay();
     }
 
     if (overlayClose) {
